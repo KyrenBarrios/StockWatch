@@ -1,0 +1,7 @@
+<h1><%= @category.category_name %> - <%= pluralize(@category.stocks.count, "stocks") %></h1>
+
+<ol>
+    <% @category.stocks.each do  |stock| %>
+      <li><%= link_to stock.name, stock_path(stock)  %></li>
+    <% end  %>
+</ol>

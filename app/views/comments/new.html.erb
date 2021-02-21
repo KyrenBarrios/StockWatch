@@ -1,0 +1,27 @@
+
+
+<% if @comment.stock %>
+<h1>New Comment for <%= @comment.stock.name%>!</h1>
+<% else %>
+<h1>New Comment!</h1>
+<% end %>
+
+<%= render partial: "layouts/errors", locals: {object: @comment} %>
+
+
+<%= form_for([@comment.stock,@comment]) do |f|%>
+
+ <% if !@comment.stock %>
+  <%= f.label :stock %>
+  <%= f.collection_select :stock_id, Stock.all, :id, :name %>
+<% else %>
+    <%= f.hidden_field :stock_id %>
+<% end %>
+
+  
+  <%= f.text_field :content %>
+
+
+  <%= f.submit %>
+
+<% end %>

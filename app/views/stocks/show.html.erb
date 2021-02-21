@@ -1,0 +1,22 @@
+<h1><%=@stock.name%></h1>
+<h2>By: <%=link_to @stock.user.username, user_path(@stock.user)%> </h2>
+
+<h3>Category: <%= @stock.category.try(:category_name)%></h3>
+<% if @stock.user == current_user %>
+<h4><%= link_to "Edit Stock", edit_stock_path(@stock)%></h4>
+<% end %>
+
+<div><%= @stock.content%></div>
+
+
+<p><%= link_to 'Add a new comment', new_stock_comment_path(@stock)%></p>
+
+<% if !@stock.comments.empty? %>
+  <p><%= link_to 'See all comments', stock_comments_path(@stock)%></p>
+  <h4>Most Recent Comments:</h4>
+  <% @stock.comments.order(updated_at: :desc).limit(3).each do |c|%>
+    <li>
+      <strong><%= c.user.username%></strong> says "<%= link_to c.content, stock_comment_path(@stock,c)%>" at <%= c.updated_at.strftime("%I:%M %p on %m/%d/%Y") %>
+    </li>
+  <% end %>
+<% end %>

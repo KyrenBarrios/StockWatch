@@ -1,0 +1,11 @@
+<% if @stock %>
+  <h1>Comments for <%= @stock.name%></h1>
+<% else %>
+  <h1>All Comments</h1>
+<% end %>
+
+<ul>
+<% @comments.each do |c|%>
+  <li><%= c.user.username%> says "<%= c.content%>" about this stock: <strong><%= link_to c.stock.name, stock_path(c.stock_id) %></strong></li>
+<% end %>
+</ul>

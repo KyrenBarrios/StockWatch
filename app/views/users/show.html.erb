@@ -1,0 +1,15 @@
+<h1>Welcome <%=@user.username %></h1>
+
+
+<%= display_stocks %>
+
+<%= render partial: "stocks/stocks", locals: {stocks: @user.stocks} %>
+
+
+
+
+
+
+
+
+
