@@ -14,7 +14,8 @@
       post '/login' => 'sessions#create'
      
       #logout route
-      delete '/logout' => 'sessions#logout'
+      
+      get "/logout", to: "sessions#logout", as: "logout"
      
       #omniauth callback route
      
