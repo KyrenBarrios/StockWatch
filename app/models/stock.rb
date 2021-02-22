@@ -17,7 +17,6 @@ class Stock < ApplicationRecord
 
   def self.search(params)
     left_joins(:comments).where("LOWER(stocks.name) LIKE :term OR LOWER(stocks.content) LIKE :term OR LOWER(comments.content) LIKE :term", term: "%#{params}%")
-    #select any posts with a title that is an exact match to the search term
   end
 
   def category_attributes=(attr)
@@ -25,8 +24,6 @@ class Stock < ApplicationRecord
   end
 
   def too_many_stocks
-    # are there already 3 posts added to the database with created_at as the current date
-    #iterate over user's posts
     today_stocks = user.stocks.select do |p|
       p.created_at.try(:to_date) == Date.today
     end

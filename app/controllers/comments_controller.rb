@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
    end
  
    def new
-     #if it's nested and why find theStock post
+     
      if params[:stock_id] && @stock = Stock.find_by_id(params[:stock_id])
        @comment = @stock.comments.build
      else
