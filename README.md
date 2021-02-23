@@ -1,4 +1,4 @@
-CLICK
+
 
 Welcome to Stock Watch is a platform where you can share stocks you are interested in and watching at the current moment. You can add new Stocks or find new ones that other users have posted. 
 

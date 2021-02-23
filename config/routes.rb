@@ -1,8 +1,8 @@
    Rails.application.routes.draw do
       root "sessions#home"
      
-     #users route
-     get '/users/most-active' => 'users#most_active'
+     
+    
      
      
      
@@ -25,7 +25,11 @@
       resources :stocks do
          resources :comments
        end
+      
+       
        resources :comments
+
+       
        resources :users do
          resources :stocks, shallow: true
        end

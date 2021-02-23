@@ -7,9 +7,7 @@ class User < ApplicationRecord
 
   validates :username, :email, presence: true
 
-  def self.most_active
-    joins(:stocks).group(:user_id).order("count(user_id) DESC").limit(3)
-  end
+  
 end
 
 

@@ -12,14 +12,11 @@ class StocksController < ApplicationController
 
   def index
     if params[:user_id] && @user = User.find_by_id(params[:user_id])
-       @stocks = @user.stocks.alpha
+       @stocks = @user.stocks
     else
       @error = "That user doesn't exist" if params[:user_id]
-      @stocks = Stock.alpha.includes(:category, :user)
+      @stocks = Stock.includes(:category, :user)
     end
-
-    @stocks = @stocks.search(params[:q].downcase) if params[:q] && !params[:q].empty?
-    @stocks = @stocks.filter(params[:stock][:category_id]) if params[:stock] && params[:stock][:category_id] != ""
 
   end
 

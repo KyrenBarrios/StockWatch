@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
   end
 
   def google
-    @user = User.find_or_create_by(username: auth["info"]["name"]) do |user| 
+    @user = User.find_or_create_by(email: auth["info"]["email"]) do |user| 
         user.password =  SecureRandom.hex(10)
     end 
     if @user && @user.id
