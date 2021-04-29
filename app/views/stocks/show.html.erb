@@ -1,4 +1,5 @@
-<h1><%=@stock.name%></h1>
+<h1><%=@stock.name%> </h1> 
+<h2><%=@stock.price%>$</h2>
 <h2>By: <%=link_to @stock.user.username, user_path(@stock.user)%> </h2>
 
 <h3>Category: <%= @stock.category.try(:category_name)%></h3>
@@ -12,7 +13,6 @@
 <p><%= link_to 'Add a new comment', new_stock_comment_path(@stock)%></p>
 
 <% if !@stock.comments.empty? %>
-  <p><%= link_to 'See all comments', stock_comments_path(@stock)%></p>
   <h4>Most Recent Comments:</h4>
   <% @stock.comments.order(updated_at: :desc).limit(3).each do |c|%>
     <li>

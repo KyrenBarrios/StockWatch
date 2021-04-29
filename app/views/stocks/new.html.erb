@@ -6,8 +6,11 @@
 
 <%= form_for(@stock) do |f|%>
 
-  <%= f.label "Choose a category:" %>
+  <%= f.label "Choose a category:" %> 
   <%= f.collection_select :category_id, Category.all, :id, :category_name, include_blank: true %>
+  
+  
+
 
 
    <p>Or create a new category:
@@ -19,9 +22,13 @@
   <br>
   <%= f.label :name %>
   <%= f.text_field :name %>
+  <%= f.label :price %>
+  <%= f.text_field :price %>
   <br></br>
   <%= f.label :content %>
   <%= f.text_area :content %>
+
+  
 
 
   <%= f.submit %>

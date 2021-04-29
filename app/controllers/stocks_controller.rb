@@ -32,13 +32,13 @@ class StocksController < ApplicationController
 
 
   def edit
-    @stock = Stock.find_by_id(params[:id])
+    stock_find
     redirect_to stocks_path if !@stock || @stock.user != current_user
     @stock.build_category if !@stock.category
   end
 
   def update
-     @stock = Stock.find_by(id: params[:id])
+    stock_find
      redirect_to stocks_path if !@stock || @stock.user != current_user
     if @stock.update(stock_params)
       redirect_to stock_path(@stock)
@@ -50,14 +50,33 @@ class StocksController < ApplicationController
 
 
   def show
-    @stock = Stock.find_by_id(params[:id])
+    stock_find
     redirect_to stocks_path if !@stock
   end
 
+  def search 
+    @stocks = Stock.search(params[:name])
+    render :index
+  end 
+
+  def destroy
+    @stock = Stock.find_by(id: params[:id])
+    @stock.destroy
+    redirect_to stocks_path
+end
+
+
+
 
   private
+  
+  def stock_find
+    @stock = Stock.find_by_id(params[:id])
+  end
 
   def stock_params
-    params.require(:stock).permit(:name,:content, :category_id, category_attributes: [:category_name])
+    params.require(:stock).permit(:name,:content, :price, :category_id)
   end
+
+  
 end

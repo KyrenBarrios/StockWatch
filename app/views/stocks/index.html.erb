@@ -1,17 +1,6 @@
 <%= index_display_header %>
 
-<%= form_tag("/stocks", method: 'get') do %>
-  <%= label_tag(:q, "Search for:") %>
-  <%= text_field_tag(:q) %>
-  <%= submit_tag("Search") %>
-<% end %>
 
-<br>
-<%= form_tag("/stocks", method: 'get') do %>
-  <%= label_tag(:category_id, "Select a Category:") %>
-  <%= collection_select(:stock,:category_id, Category.all,:id, :category_name) %>
-  <%= submit_tag("Filter") %>
-<% end %>
 
 <% if @stocks.blank? %>
 

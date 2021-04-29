@@ -17,6 +17,8 @@
   <br>
   <%= f.label :name %>
   <%= f.text_field :name%>
+  <%= f.label :price %>
+  <%= f.text_field :price %>
   <br></br>
   <%= f.label :content %>
   <%= f.text_area :content %>
@@ -25,3 +27,4 @@
   <%= f.submit %>
 
 <% end %>
+<%= link_to "DELETE STOCK", stock_path(@stock), method: :delete %>

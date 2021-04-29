@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+  
     <title>StockWatch</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,21 +13,43 @@
   </head>
 
   <body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/stocks">StockWatch</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <% if logged_in?%>
+  <%= link_to "My Stocks", user_stocks_path(current_user) %>
+  <% end %>
 
-  <div>
-      <% if logged_in?%>
-      <%= link_to "Add a Stock", new_stock_path %> |
-      <%= link_to "All Stocks", stocks_path %> |
-      <%= link_to "My Stocks", user_stocks_path(current_user) %> |
-      <%= link_to "Add a Comment", new_comment_path %> |
-      <%= link_to "All Categories", categories_path %> |
-      <%= link_to "Home", user_path(current_user)%> |
-      <%= link_to "Logout", logout_path, method:"delete"%>
-
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+    
+      <li li {
+  display: inline;
+} class="nav-item active"> 
       
-      <% end %>
+      
+        <li><a class="nav-link" href="/stocks">All Stocks <span class="sr-only">(current)</span></a></li>
+        <a class="nav-link" href= "/stocks/new" >Add a Stock <span class="sr-only">current)</span></a>
+        <a class="nav-link" href="/comments/new">Add a Comment <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/categories">All Categories <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/logout">Logout <span class="sr-only">(current)</span></a>
+        
 
-    </div>
+      </li>
+
+    </ul>
+    <%= form_with(url: search_path, method: 'get', class: 'd-flex') do |f|%>
+          <%= f.text_field :name, class: "form-control me-2", placeholder: "Search for Name" %>
+          <%= f.submit :Search, class: "btn btn-outline-success" %>
+        <% end %>
+  </div>
+</nav>
+
+   
+
+  
 
     <div>
       <% if flash[:message] %>
@@ -35,5 +59,8 @@
       <%= @error%>
     </div>
     <%= yield %>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 </html>

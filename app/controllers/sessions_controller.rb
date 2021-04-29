@@ -18,6 +18,7 @@ class SessionsController < ApplicationController
 
   def google
     @user = User.find_or_create_by(email: auth["info"]["email"]) do |user| 
+        user.name = auth["info"]["first_name"]
         user.password =  SecureRandom.hex(10)
     end 
     if @user && @user.id
@@ -26,6 +27,8 @@ class SessionsController < ApplicationController
     else 
         redirect_to new_user_path
     end 
+end 
+def home 
 end 
 
   private

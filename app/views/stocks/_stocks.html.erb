@@ -1,5 +1,5 @@
 <ul>
     <% stocks.each do |s|%>
-      <li><%= link_to s.name, stock_path(s) %> - <%= s.content%> </li>
+      <li><%= link_to s.name, stock_path(s) %> - <%= s.content%> <%= s.price%> </li>
     <% end %>
 </ul>

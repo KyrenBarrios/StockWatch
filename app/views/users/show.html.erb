@@ -1,4 +1,8 @@
+<%  if current_user === @user %>
 <h1>Welcome <%=@user.username %></h1>
+<% else %>
+<<h1>Welcome to <%=@user.username%>'s watchlist </h1>
+<% end %>
 
 
 <%= display_stocks %>

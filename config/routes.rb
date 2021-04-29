@@ -16,6 +16,8 @@
       #logout route
       
       get "/logout", to: "sessions#logout", as: "logout"
+      
+      get "/search" , to: "stocks#search", as: "search"
      
       #omniauth callback route
      
@@ -31,13 +33,13 @@
 
        
        resources :users do
-         resources :stocks, shallow: true
+         resources :stocks, shallow: true #same thing as saying [:new,:create,index]
        end
      
        resources :categories, only: [:index, :show]
      
      
-     
+       delete '/stocks/:id', to: 'stocks#destroy' #destroy
      
      
      
