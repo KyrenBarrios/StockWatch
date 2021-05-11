@@ -50,7 +50,7 @@ class StocksController < ApplicationController
 
 
   def show
-    stock_find
+    @stock = Stock.find_by_id(params[:id])
     redirect_to stocks_path if !@stock
   end
 
@@ -75,7 +75,7 @@ end
   end
 
   def stock_params
-    params.require(:stock).permit(:name,:content, :price, :category_id)
+    params.require(:stock).permit(:name,:content, :price, :category_id, category_attributes:[:category_name])
   end
 
   

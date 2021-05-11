@@ -8,11 +8,15 @@ class Stock < ApplicationRecord
   
 
   
+  #category_attributes=(attributes)
+  def category_attributes=(attr)
+    self.category = Category.find_or_create_by(attr) if !attr[:category_name].blank?
+  end
 
- def self.search(query)
-     self.where("name LIKE ?", "%#{query}%")
- end 
 
+  scope :search, -> (query) { self.where("name LIKE ?", "%#{query}%") }
+
+  
   
 end
 

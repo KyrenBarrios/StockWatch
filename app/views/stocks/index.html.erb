@@ -4,7 +4,7 @@
 
 <% if @stocks.blank? %>
 
-    <h2>No stocks yet. Write a stock post <%= link_to "here", new_stock_path%></h2>
+    <h2>No stocks yet. Create a stock <%= link_to "here", new_stock_path%></h2>
 
 <% else %>
   <%= render partial: "stocks", locals: {stocks: @stocks} %>

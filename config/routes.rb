@@ -36,7 +36,7 @@
          resources :stocks, shallow: true #same thing as saying [:new,:create,index]
        end
      
-       resources :categories, only: [:index, :show]
+       resources :categories, only: [:index, :show, :new]
      
      
        delete '/stocks/:id', to: 'stocks#destroy' #destroy

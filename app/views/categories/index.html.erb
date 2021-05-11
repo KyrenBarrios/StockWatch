@@ -2,11 +2,6 @@
   <% @categories.each do |category| %>
     <li>
       <%= link_to category.category_name, category_path(category) %>
-      <ol>
-        <% category.stocks.each do  |stock| %>
-          <li><%= link_to stock.name, stock_path(stock)  %></li>
-        <% end  %>
-      </ol>
     </li>
   <% end %>
 </ul>

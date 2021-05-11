@@ -41,7 +41,7 @@
 
     </ul>
     <%= form_with(url: search_path, method: 'get', class: 'd-flex') do |f|%>
-          <%= f.text_field :name, class: "form-control me-2", placeholder: "Search for Name" %>
+          <%= f.text_field :name, class: "form-control me-2", placeholder: "Search for Stock Name" %>
           <%= f.submit :Search, class: "btn btn-outline-success" %>
         <% end %>
   </div>
